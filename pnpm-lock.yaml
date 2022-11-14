@@ -6,6 +6,7 @@ specifiers:
   vite: ^3.1.8
   vite-plugin-env-compatible: ^1.1.1
   vue: ^3.2.41
+  vuetify: 3.0.1
 
 dependencies:
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.3+vue@3.2.45
@@ -13,6 +14,7 @@ dependencies:
   vite: 3.2.3
   vite-plugin-env-compatible: 1.1.1
   vue: 3.2.45
+  vuetify: 3.0.1_vue@3.2.45
 
 packages:
 
@@ -519,4 +521,23 @@ packages:
       '@vue/runtime-dom': 3.2.45
       '@vue/server-renderer': 3.2.45_vue@3.2.45
       '@vue/shared': 3.2.45
+    dev: false
+
+  /vuetify/3.0.1_vue@3.2.45:
+    resolution: {integrity: sha512-Vl4wYB4mCm6GFK6Q9KZDK+HM3YKI7md7BoUPwbgqZj4bkofjQ/8NVSRQQpTcwk0YoQrgw6qj0QaOtP5zitkS1Q==}
+    engines: {node: ^12.20 || >=14.13}
+    peerDependencies:
+      vite-plugin-vuetify: ^1.0.0-alpha.12
+      vue: ^3.2.0
+      vue-i18n: ^9.0.0
+      webpack-plugin-vuetify: ^2.0.0-alpha.11
+    peerDependenciesMeta:
+      vite-plugin-vuetify:
+        optional: true
+      vue-i18n:
+        optional: true
+      webpack-plugin-vuetify:
+        optional: true
+    dependencies:
+      vue: 3.2.45
     dev: false

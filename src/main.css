@@ -1,0 +1,4 @@
+/* hide scrollbar */
+html {
+  overflow-y: auto;
+}
