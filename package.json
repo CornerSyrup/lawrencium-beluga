@@ -1,0 +1,25 @@
+{
+  "name": "lawrencium-beluga",
+  "version": "0.1.0",
+  "scripts": {},
+  "author": "Klein",
+  "license": "MIT",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KleinChiu/lawrencium-beluga.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KleinChiu/lawrencium-beluga/issues"
+  },
+  "homepage": "https://github.com/KleinChiu/lawrencium-beluga#readme",
+  "dependencies": {
+    "@vitejs/plugin-vue": "^3.1.2",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.8",
+    "vite-plugin-env-compatible": "^1.1.1",
+    "vue": "^3.2.41"
+  }
+}
