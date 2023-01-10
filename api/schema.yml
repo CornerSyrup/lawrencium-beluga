@@ -31,6 +31,23 @@ paths:
                     items:
                       $ref: "#/components/schemas/menuItem"
 
+  /orders:
+    post:
+      tags:
+        - order
+      summary: Places an order.
+      operationId: placeOrder
+      responses:
+        200:
+          description: Order placed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: "#/components/schemas/orderId"
+
 components:
   schemas:
     menuItemId:
@@ -43,3 +60,7 @@ components:
           $ref: "#/components/schemas/menuItemId"
         name:
           type: string
+
+    orderId:
+      type: string
+      format: "uuid"
