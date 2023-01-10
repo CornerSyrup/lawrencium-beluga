@@ -65,6 +65,19 @@ paths:
                 properties:
                   id:
                     $ref: "#/components/schemas/orderId"
+  /orders/{orderId}:
+    get:
+      tags:
+        - order
+      summary: Gets detail of an order by ID.
+      operationId: getOrderDetail
+      responses:
+        200:
+          description: Detail of an order
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/orderDetail"
 
 components:
   schemas:
@@ -92,3 +105,12 @@ components:
             - placed
             - in process
             - served
+    orderDetail:
+      allOf:
+        - $ref: "#/components/schemas/orderHistory"
+        - type: object
+          properties:
+            menus:
+              type: array
+              items:
+                $ref: "#/components/schemas/menuItem"
