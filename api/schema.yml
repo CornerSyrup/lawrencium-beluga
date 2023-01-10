@@ -32,6 +32,24 @@ paths:
                       $ref: "#/components/schemas/menuItem"
 
   /orders:
+    get:
+      tags:
+        - order
+      summary: Gets all orders that have been placed.
+      operationId: getOrderHistory
+      responses:
+        200:
+          description: List of history orders.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  history:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/orderHistory"
+
     post:
       tags:
         - order
@@ -64,3 +82,13 @@ components:
     orderId:
       type: string
       format: "uuid"
+    orderHistory:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/orderId"
+        status:
+          enum:
+            - placed
+            - in process
+            - served
