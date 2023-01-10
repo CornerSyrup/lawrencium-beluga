@@ -95,16 +95,19 @@ components:
     orderId:
       type: string
       format: "uuid"
+    orderStatus:
+      type: string
+      enum:
+        - placed
+        - in process
+        - served
     orderHistory:
       type: object
       properties:
         id:
           $ref: "#/components/schemas/orderId"
         status:
-          enum:
-            - placed
-            - in process
-            - served
+          $ref: "#/components/schemas/orderStatus"
     orderDetail:
       allOf:
         - $ref: "#/components/schemas/orderHistory"
