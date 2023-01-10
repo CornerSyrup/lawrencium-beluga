@@ -1,0 +1,45 @@
+openapi: "3.0.2"
+
+info:
+  title: Order API
+  version: "1.0"
+
+servers:
+  - url: http://localhost:{port}/api
+    description: Development server
+    variables:
+      port:
+        default: "8080"
+
+paths:
+  /menus:
+    get:
+      tags:
+        - menu
+      summary: Gets all menu items.
+      operationId: getMenuItems
+      responses:
+        200:
+          description: List of menu items.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  menu:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/menuItem"
+
+components:
+  schemas:
+    menuItemId:
+      type: string
+      format: "uuid"
+    menuItem:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/menuItemId"
+        name:
+          type: string
