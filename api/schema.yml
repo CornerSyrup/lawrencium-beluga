@@ -20,7 +20,7 @@ paths:
       operationId: getMenuItems
       responses:
         200:
-          description: List of menu items.
+          description: List of menu items
           content:
             application/json:
               schema:
@@ -39,7 +39,7 @@ paths:
       operationId: getOrderHistory
       responses:
         200:
-          description: List of history orders.
+          description: List of history orders
           content:
             application/json:
               schema:
