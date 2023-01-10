@@ -1,0 +1,119 @@
+openapi: "3.0.2"
+
+info:
+  title: Order API
+  version: "1.0"
+
+servers:
+  - url: http://localhost:{port}/api
+    description: Development server
+    variables:
+      port:
+        default: "8080"
+
+paths:
+  /menus:
+    get:
+      tags:
+        - menu
+      summary: Gets all menu items.
+      operationId: getMenuItems
+      responses:
+        200:
+          description: List of menu items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  menu:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/menuItem"
+
+  /orders:
+    get:
+      tags:
+        - order
+      summary: Gets all orders that have been placed.
+      operationId: getOrderHistory
+      responses:
+        200:
+          description: List of history orders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  history:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/orderHistory"
+
+    post:
+      tags:
+        - order
+      summary: Places an order.
+      operationId: placeOrder
+      responses:
+        200:
+          description: Order placed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: "#/components/schemas/orderId"
+  /orders/{orderId}:
+    get:
+      tags:
+        - order
+      summary: Gets detail of an order by ID.
+      operationId: getOrderDetail
+      responses:
+        200:
+          description: Detail of an order
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/orderDetail"
+
+components:
+  schemas:
+    menuItemId:
+      type: string
+      format: "uuid"
+    menuItem:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/menuItemId"
+        name:
+          type: string
+
+    orderId:
+      type: string
+      format: "uuid"
+    orderStatus:
+      type: string
+      enum:
+        - placed
+        - in process
+        - served
+    orderHistory:
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/orderId"
+        status:
+          $ref: "#/components/schemas/orderStatus"
+    orderDetail:
+      allOf:
+        - $ref: "#/components/schemas/orderHistory"
+        - type: object
+          properties:
+            menus:
+              type: array
+              items:
+                $ref: "#/components/schemas/menuItem"
